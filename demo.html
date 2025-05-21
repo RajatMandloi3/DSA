@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Flow Demo</title>
+  <style>
+    .box {
+      padding: 30px;
+      margin: 10px;
+      border: 2px solid black;
+    }
+    #outer { background-color: #fdd; }
+    #middle { background-color: #dfd; }
+    #inner { background-color: #ddf; }
+  </style>
+</head>
+<body>
+
+  <div id="outer" class="box">
+    Outer
+    <div id="middle" class="box">
+      Middle
+      <div id="inner" class="box">
+        Inner (Click me)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const log = (text, color) => {
+      console.log(`%c${text}`, `color: ${color}; font-weight: bold;`);
+    };
+
+    // Add listeners for all 3 boxes in capture and bubble phase
+    ['outer', 'middle', 'inner'].forEach(id => {
+      const el = document.getElementById(id);
+
+      // Capturing phase
+      el.addEventListener('click', e => {
+        log(`${id} capture`, 'orange');
+      }, true); // true = capture phase
+
+      // Bubbling phase
+      el.addEventListener('click', e => {
+        log(`${id} bubble`, 'blue');
+      });
+    });
+  </script>
+
+</body>
+</html>
