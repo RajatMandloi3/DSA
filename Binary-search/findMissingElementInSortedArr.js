@@ -1,3 +1,4 @@
+// this program is for consecutive numbers from 1 to n
 const findMissingElementInSortedArr = (arr, n) => {
   let start = 0
   let end = n - 1
