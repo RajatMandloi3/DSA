@@ -1,4 +1,4 @@
-const findIndexOfPivotElement = (arr) => {
+const findIndexOfPivotElementInRotatedSortedArray = (arr) => {
   let start = 0; let end = arr.length - 1; let mid = Math.floor((start + end) / 2)
 
   while (start <= end) {
